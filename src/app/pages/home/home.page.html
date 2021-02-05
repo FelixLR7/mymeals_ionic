@@ -1,0 +1,30 @@
+<app-header [title]="title"></app-header>
+
+<ion-content>
+    <!-- <ion-card *ngFor="let day of days" [ngClass]="{'past-day' : isPast(day.date) }"> -->
+    <!-- <ion-card *ngFor="let day of days; let i = index" [class]="(isPast2(day) ? 'primary' : 'disabled-card')"> -->
+    <ion-card *ngFor="let day of days">
+        <ion-card-header color="primary">
+            <ion-card-title>
+                <ion-text color="light">{{ day.date.getDate() }} {{ day.weekDayName }} </ion-text>
+            </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list class="list">
+                <ion-item *ngFor="let schedule of day.meals" color="transparent">
+                    <ion-label class="schedule-name">{{ schedule.scheduleName }}</ion-label>
+                    <ion-label>{{ schedule.mealName }}</ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="generateWeek()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button (click)="user()">
+            <ion-icon name="sub"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

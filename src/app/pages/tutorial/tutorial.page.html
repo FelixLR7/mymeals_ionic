@@ -1,0 +1,59 @@
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts" >
+    <ion-slide>
+      <ion-card>
+        <ion-img src="/assets/img/calendar.svg"></ion-img>
+        <ion-card-header>
+          <ion-card-title>¡Bienvenido/a a la nueva forma de organizar tus comidas!</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="ion-text-justify">
+            <p (click)="enableBtn()">Antes de usar la aplicación, sería mejor que leyeras algunos consejos para que te sea más fácil su uso. Luego no te quejes porque haya algo que no funciona o no sabes hacer. Si has leído esto, pulsa aquí para desbloquear el botón y seguir.</p>
+          </div>
+          <ion-button (click)="nextPage()" fill="solid" [disabled]="disabledBtn1" #btn1>
+            Siguiente
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card>
+        <ion-img src="/assets/img/calendar.svg"></ion-img>
+        <ion-card-header>
+          <ion-card-title>El resultado depende de ti</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="ion-text-justify">
+            <p>Cuantas más comidas introduzcas y más variedad de éstas tengas, más variado será el calendario final.</p><br>
+            <p>El calendario mostrará dos semanas a partir del día en que lo generes. Cuando pase a la segunda semana, la primera se borrara y se generará la siguiente semana, para que puedas anticiparte siempre. </p>
+          </div>
+          <ion-button (click)="nextPage()" fill="solid" [disabled]="disabledBtn1" #btn1>
+            Siguiente
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card>
+        <ion-img src="/assets/img/calendar.svg"></ion-img>
+        <ion-card-header>
+          <ion-card-title>Características</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="ion-text-justify">
+            <ul>
+              <li>¿Los domingos son de paella? Fíjala y olvídate</li>
+              <li>Elegir qué días se generan las comidas (¿sólo quieres los findes?)</li>
+              <li>¿Sólo quieres generar el desayuno y la comida? ¡Elígelo también!</li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+          <ion-button (click)="finish()" expand="block" fill="solid" color="primary" [disabled]="disabledBtn1" #btn1>
+            Terminar
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

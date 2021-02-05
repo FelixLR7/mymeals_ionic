@@ -1,0 +1,32 @@
+<ion-list *ngIf="((list | async)?.length > 0)">
+  <ion-searchbar placeholder="Buscar" inputmode="search" type="search" [showCancelButton]="false" (ionChange)="search($event)" [debounce]="250"></ion-searchbar>
+  <ion-item *ngFor="let item of (list | async) | searchfilter: searchValue: searchColumn">
+    <!-- <ion-label> {{ item.name + " -- " +  item.category.id }} </ion-label> -->
+    <ion-label> {{ item.name }} </ion-label>
+    
+    <ion-buttons slot="end">
+      <ion-button  slot="end" fill="clear" expand="full" (click)="update(item.id)" >
+        <ion-icon name="pencil" ></ion-icon>
+      </ion-button>
+      <ion-button slot="end" fill="clear" expand="full" (click)="delete(item.id)">
+        <ion-icon name="trash" color="danger" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+</ion-list>
+
+<ion-grid *ngIf="((list | async)?.length == 0)" class="ion-no-padding" style="height: 100%">
+  <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100%">
+    <p class="ion-text-center">
+    Todavía no has añadido nada, ¡utiliza el botón que tienes abajo!
+    </p>
+  </ion-row>
+</ion-grid>
+
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button [routerLink]="[urlNew, '-1']">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+

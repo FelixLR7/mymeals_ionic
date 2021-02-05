@@ -1,0 +1,15 @@
+<app-header [title]="title"></app-header>
+
+<ion-content>
+    <!-- <ion-list>
+        <ion-item *ngFor="let item of schedules2">
+          <ion-label> {{ item.name }}</ion-label>
+        </ion-item>
+      </ion-list> 
+      <h3 class="ion-text-center">Próximamente podrás añadir más</h3>-->
+    <ion-list>
+      <ion-item *ngFor="let item of testList">
+        <ion-label> {{  item.id1 + " -- " + item.id2 }}</ion-label>
+      </ion-item>
+    </ion-list>
+</ion-content>

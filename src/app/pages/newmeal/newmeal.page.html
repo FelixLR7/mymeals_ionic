@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/meals"></ion-back-button>
+    </ion-buttons>
+    <ion-title> {{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <form [formGroup]="form" *ngIf="form != null">
+    <ion-list>
+      <ion-item>
+        <ion-text color="danger" *ngIf="nameError">Introduce un nombre</ion-text>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" large formControlName="name" (ionChange)="checkName()"></ion-input>
+      </ion-item>
+      <ion-list>
+        <ion-list-header>
+          <ion-label>
+            <h2>Horario</h2>
+            <ion-label color="danger" *ngIf="schedulesError"><h3>Selecciona al menos uno</h3></ion-label>
+          </ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let item of form.controls.schedules.controls; let i = index" (ionChange)="checkSchedule()">
+          <ion-checkbox slot="start" [formControl]="item.controls.selected"></ion-checkbox>
+          <ion-label> {{ item.controls.name.value }}</ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-list-header>
+          <ion-label>
+            <h2>Categoría</h2>
+          </ion-label>
+        </ion-list-header>
+        <ion-radio-group [value]="categories[0].id" formControlName="category">
+          <ion-item *ngFor="let item of categories; let i = index">
+            <ion-radio slot="start" [value]="item.id"></ion-radio>
+            <ion-label> {{ item.name }}</ion-label>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </ion-list>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          <h2>Días de la semana</h2>
+          <ion-label color="danger" *ngIf="weekDaysError"><h3>Selecciona al menos uno</h3></ion-label>
+          </ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let item of form.controls.weekdays.controls; let i = index" (ionChange)="checkWeekDays()">
+        <ion-checkbox slot="start" [formControl]="item.controls.selected" [id]="i"></ion-checkbox>
+        <ion-label> {{ item.controls.name.value }}</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="saveMeal()" expand="block">
+      Guardar
+    </ion-button>
+  </form>
+  
+</ion-content>
